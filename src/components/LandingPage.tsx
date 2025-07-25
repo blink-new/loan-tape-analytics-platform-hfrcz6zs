@@ -186,6 +186,53 @@ export default function LandingPage({ onNavigateToDashboard, onNavigateToSamples
           </Card>
         </div>
 
+        {/* Sample Data Generator CTA */}
+        <div className="max-w-4xl mx-auto mb-16">
+          <Card className="bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200">
+            <CardContent className="p-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <FileText className="w-8 h-8 text-amber-700" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4">
+                  Need Sample Data for Testing?
+                </h3>
+                <p className="text-lg text-slate-600 mb-6 max-w-2xl mx-auto">
+                  Generate realistic NBFC loan tape samples across different AUM buckets. 
+                  Perfect for testing, training, or demonstrating the platform capabilities.
+                </p>
+                <div className="grid md:grid-cols-4 gap-4 mb-8">
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="text-2xl font-bold text-blue-700">10</div>
+                    <div className="text-sm text-slate-600">&lt; Rs 1,000 Cr AUM</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="text-2xl font-bold text-green-700">10</div>
+                    <div className="text-sm text-slate-600">&lt; Rs 5,000 Cr AUM</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="text-2xl font-bold text-purple-700">10</div>
+                    <div className="text-sm text-slate-600">&lt; Rs 10,000 Cr AUM</div>
+                  </div>
+                  <div className="bg-white rounded-lg p-4 border border-amber-200">
+                    <div className="text-2xl font-bold text-red-700">10</div>
+                    <div className="text-sm text-slate-600">&gt; Rs 10,000 Cr AUM</div>
+                  </div>
+                </div>
+                <Button 
+                  onClick={onNavigateToSamples}
+                  className="bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 text-lg"
+                >
+                  Generate 40 Sample Loan Tapes
+                </Button>
+                <p className="text-sm text-slate-500 mt-3">
+                  Includes realistic loan-level data, risk profiles, and forensic red flags
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
