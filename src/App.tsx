@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { blink } from './blink/client'
 import LandingPage from './components/LandingPage'
 import Dashboard from './components/Dashboard'
+import SampleDataGenerator from './components/SampleDataGenerator'
 import { AnalysisResult } from './types/loan-tape'
 
 function App() {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [currentView, setCurrentView] = useState<'landing' | 'dashboard'>('landing')
+  const [currentView, setCurrentView] = useState<'landing' | 'dashboard' | 'samples'>('landing')
   const [analyses, setAnalyses] = useState<AnalysisResult[]>([])
 
   useEffect(() => {
@@ -51,15 +52,30 @@ function App() {
       {currentView === 'landing' ? (
         <LandingPage 
           onNavigateToDashboard={() => setCurrentView('dashboard')}
+          onNavigateToSamples={() => setCurrentView('samples')}
           analyses={analyses}
           setAnalyses={setAnalyses}
         />
-      ) : (
+      ) : currentView === 'dashboard' ? (
         <Dashboard 
           onNavigateToLanding={() => setCurrentView('landing')}
           analyses={analyses}
           setAnalyses={setAnalyses}
         />
+      ) : (
+        <SampleDataGenerator />
+      )}
+      
+      {/* Navigation */}
+      {currentView !== 'landing' && (
+        <div className="fixed top-4 left-4 z-50">
+          <button
+            onClick={() => setCurrentView('landing')}
+            className="bg-white shadow-lg rounded-lg px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors"
+          >
+            ← Back to Home
+          </button>
+        </div>
       )}
     </div>
   )

@@ -7,11 +7,12 @@ import { generateMockAnalysis } from '../utils/mock-data'
 
 interface LandingPageProps {
   onNavigateToDashboard: () => void
+  onNavigateToSamples: () => void
   analyses: AnalysisResult[]
   setAnalyses: (analyses: AnalysisResult[]) => void
 }
 
-export default function LandingPage({ onNavigateToDashboard, analyses, setAnalyses }: LandingPageProps) {
+export default function LandingPage({ onNavigateToDashboard, onNavigateToSamples, analyses, setAnalyses }: LandingPageProps) {
   const [isUploading, setIsUploading] = useState(false)
   const [dragActive, setDragActive] = useState(false)
 
@@ -101,11 +102,16 @@ export default function LandingPage({ onNavigateToDashboard, analyses, setAnalys
                 <p className="text-sm text-slate-600">Forensic Insights Platform</p>
               </div>
             </div>
-            {analyses.length > 0 && (
-              <Button onClick={onNavigateToDashboard} variant="outline">
-                View Dashboard ({analyses.length})
+            <div className="flex gap-3">
+              <Button onClick={onNavigateToSamples} variant="outline">
+                Generate Sample Data
               </Button>
-            )}
+              {analyses.length > 0 && (
+                <Button onClick={onNavigateToDashboard} variant="outline">
+                  View Dashboard ({analyses.length})
+                </Button>
+              )}
+            </div>
           </div>
         </div>
       </header>
